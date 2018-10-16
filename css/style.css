@@ -8,19 +8,34 @@ Dark green: #28b485
 */
 
 /* Universal selector */
-* {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  /* Controls root font-size.
+  Using a % allows the user to adjust the root font-size to "zoom in"
+  Default browser root font-size is 16px. 62.5% of 16px is 10px.
+  Basing on 10px makes rem usage clearer.(10px * 3rem = 30px)
+  With rem, many different values can change based on a single value.
+  rem not supported for < ie9
+  */
 }
 
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1.6rem;
   line-height: 1.7;
   color: #777;
-  padding: 30px;
+  padding: 3rem;
+  box-sizing: border-box;
+  /* box-sizing: border-box; means the element's padding and border are inlcuded in the width and height */
 }
 
 .header {
@@ -38,21 +53,21 @@ body {
   clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
 }
 
-.logo-box {
+.header__logo-box {
   position: absolute;
-  top: 40px;
-  left: 40px;
+  top: 4rem;
+  left: 4rem;
 }
 
-.logo {
-  height: 35px;
+.header__logo {
+  height: 3.5rem;
 }
 
 /* .logo-box:hover .logo {
   animation: moveInRight 1s ease-out;
 } */
 
-.text-box {
+.header__text-box {
   position: absolute;
   top: 45%;
   left: 50%;
@@ -67,14 +82,14 @@ body {
   text-transform: uppercase;
 
   backface-visibility: hidden;
-  margin-bottom: 60px;
+  margin-bottom: 6rem;
 }
 
-.heading-primary-main {
+.heading-primary--main {
   display: block;
-  font-size: 60px;
+  font-size: 6rem;
   font-weight: 400;
-  letter-spacing: 35px;
+  letter-spacing: 3.5rem;
 
   animation-name: moveInLeft;
   animation-duration: 1.5s;
@@ -83,11 +98,11 @@ body {
   /* animation-delay: 1s; */
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
   display: block;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 700;
-  letter-spacing: 21.5px;
+  letter-spacing: 2rem;
 
   animation: moveInRight 1.5s ease-out;
 }
@@ -95,11 +110,11 @@ body {
 @keyframes moveInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-120px);
+    transform: translateX(-1.2rem);
   }
 
   80% {
-    transform: translate(10px);
+    transform: translate(1rem);
   }
 
   100% {
@@ -111,11 +126,11 @@ body {
 @keyframes moveInRight {
   0% {
     opacity: 0;
-    transform: translateX(120px);
+    transform: translateX(1.2rem);
   }
 
   80% {
-    transform: translate(-10px);
+    transform: translate(-1rem);
   }
 
   100% {
@@ -127,7 +142,7 @@ body {
 @keyframes moveInBottom {
   0% {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(4rem);
   }
 
   100% {
@@ -141,26 +156,26 @@ body {
   text-transform: uppercase;
   text-decoration: none;
   display: inline-block;
-  border-radius: 100px;
+  border-radius: 10rem;
   transition: all 0.2s;
   backface-visibility: hidden;
   position: relative;
 }
 
 .btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-0.3rem);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
 }
 
 .btn:active {
-  transform: translateY(-1px);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  transform: translateY(-0.1rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
 }
 
-.btn-white {
+.btn--white {
   background-color: #fff;
   color: #777;
-  padding: 15px 40px;
+  padding: 1.5rem 4rem;
 }
 
 .btn::after {
@@ -168,7 +183,7 @@ body {
   display: inline-block;
   height: 100%;
   width: 100%;
-  border-radius: 100px;
+  border-radius: 10rem;
   position: absolute;
   top: 0;
   left: 0;
@@ -176,7 +191,7 @@ body {
   transition: all 0.3s;
 }
 
-.btn-white::after {
+.btn--white::after {
   background-color: #fff;
 }
 
@@ -185,7 +200,7 @@ body {
   opacity: 0;
 }
 
-.btn-animated {
+.btn--animated {
   animation: moveInBottom 0.5s ease-out 1s;
   animation-fill-mode: backwards;
   /* applies styles before the animation starts */
