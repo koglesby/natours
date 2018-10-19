@@ -1,0 +1,21 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  /* Defines what 1rem is.
+  Using a % allows the user to adjust the root font-size to "zoom in"
+  Default browser root font-size is 16px. 62.5% of 16px is 10px.
+  Basing on 10px makes rem usage clearer.(10px * 3rem = 30px)
+  */
+}
+
+body {
+  box-sizing: border-box;
+  /* box-sizing: border-box; means the element's padding and border are inlcuded in the width and height */
+}
