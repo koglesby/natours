@@ -1,7 +1,7 @@
 .card {
   // Funtionality
-  perspective: 100rem;
-  -moz-perspective: 100rem;
+  perspective: 50rem;
+  -moz-perspective: 50rem;
   position: relative;
   height: 52rem;
 
@@ -100,7 +100,7 @@
     width: 75%;
   }
   &__heading-span {
-    padding: 1rem 1.5rem;
+    padding: 0.8rem 1.5rem;
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
     &--1 {
