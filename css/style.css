@@ -1,3 +1,16 @@
+/* 
+ 0 - 600px     Phone
+ 600 - 900px   Tablet portrait
+ 900 - 1200px  Tablet landscape
+ 1200 - 1800px Desktop/Laptop
+ 1800px +      Large Screen
+
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- lg-screen
+*/
 @keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -34,12 +47,21 @@
   box-sizing: inherit; }
 
 html {
-  font-size: 62.5%;
   /* Defines what 1rem is.
   Using a % allows the user to adjust the root font-size to "zoom in"
   Default browser root font-size is 16px. 62.5% of 16px is 10px.
   Basing on 10px makes rem usage clearer.(10px * 3rem = 30px)
-  */ }
+  */
+  font-size: 62.5%; }
+  @media (max-width: 112.5em) {
+    html {
+      font-size: 64%; } }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
 
 body {
   box-sizing: border-box;
@@ -441,7 +463,9 @@ body {
     transition: all 0.3s 0.2s; }
   .popup__left {
     width: calc(100% * (1 / 3));
-    display: table-cell; }
+    display: table-cell;
+    position: relative;
+    overflow: hidden; }
   .popup__right {
     width: calc(100% * (2 / 3));
     display: table-cell;
@@ -461,8 +485,15 @@ body {
     -webkit-hyphens: auto;
     hyphens: auto; }
   .popup__img {
-    display: block;
-    width: 101%; }
+    position: absolute;
+    left: 50%;
+    display: inline-block;
+    height: 50%;
+    transform: translateX(-50%); }
+    .popup__img--1 {
+      bottom: 50%; }
+    .popup__img--2 {
+      top: 50%; }
   .popup:target {
     opacity: 1;
     visibility: visible; }

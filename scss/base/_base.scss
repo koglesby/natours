@@ -7,12 +7,22 @@
 }
 
 html {
-  font-size: 62.5%;
   /* Defines what 1rem is.
   Using a % allows the user to adjust the root font-size to "zoom in"
   Default browser root font-size is 16px. 62.5% of 16px is 10px.
   Basing on 10px makes rem usage clearer.(10px * 3rem = 30px)
   */
+  font-size: 62.5%;
+
+  @include respond(lg-screen) {
+    font-size: 64%;
+  }
+  @include respond(tab-land) {
+    font-size: 56.25%;
+  }
+  @include respond(tab-port) {
+    font-size: 50%;
+  }
 }
 
 body {
