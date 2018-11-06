@@ -26,6 +26,8 @@ $breakpoint argument choices:
 - tab-port
 - tab-land
 - lg-screen
+
+ORDER: Base + Typography > general layout + grid > page layout > components
 */
 @mixin respond($breakpoint) {
   @if $breakpoint == phone {
