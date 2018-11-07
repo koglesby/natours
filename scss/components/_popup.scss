@@ -12,27 +12,57 @@
 
   &__content {
     @include absCenter;
-    width: 73%;
+    width: 75%;
     background-color: $color-white;
     box-shadow: 0 2rem 4rem rgba($color-black, 0.2);
     border-radius: 3px;
     display: table;
     overflow: hidden;
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.3);
-    transition: all 0.3s 0.2s;
+    transform: translate(-50%, -50%) scale(0.35);
+    transition: all 0.4s 0.2s;
+
+    @include respond(tab-land) {
+      width: auto;
+    }
+
+    @include respond(tab-port) {
+      width: auto;
+    }
+
+    @include respond(phone) {
+      display: block;
+      position: relative;
+    }
   }
+
   &__left {
     width: calc(100% * (1 / 3));
     display: table-cell;
-    position: relative;
-    overflow: hidden;
+
+    @include respond(tab-land) {
+      vertical-align: middle;
+    }
+
+    @include respond(phone) {
+      display: block;
+    }
   }
+
   &__right {
     width: calc(100% * (2 / 3));
     display: table-cell;
     vertical-align: middle;
     padding: 3rem 5rem;
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+
+    @include respond(phone) {
+      display: none;
+    }
   }
   &__text {
     font-size: 1.4rem;
@@ -51,20 +81,6 @@
     hyphens: auto;
   }
 
-  &__img {
-    position: absolute;
-    left: 50%;
-    display: inline-block;
-    height: 50%;
-    transform: translateX(-50%);
-    &--1 {
-      bottom: 50%;
-    }
-    &--2 {
-      top: 50%;
-    }
-  }
-
   &:target {
     opacity: 1;
     visibility: visible;
@@ -73,6 +89,16 @@
   &:target &__content {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
+
+    @include respond(tab-land) {
+      padding: 1rem;
+      transform: translate(-50%, -50%) scale(0.8);
+    }
+
+    @include respond(tab-port) {
+      padding: 1rem;
+      transform: translate(-50%, -50%) scale(0.8);
+    }
   }
 
   &__close {
