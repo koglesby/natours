@@ -13,9 +13,14 @@
     left: 0;
     width: 100%;
     border-radius: 10px;
-    backface-visibility: hidden;
     overflow: hidden;
     box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+    @supports (
+      (backface-visibility: hidden) or (-webkit-backface-visibility: hidden)
+    ) {
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
 
     &--front {
       background-color: $color-white;
@@ -60,9 +65,13 @@
   &__picture {
     background-size: cover;
     height: 23rem;
-    background-blend-mode: screen;
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
+    @supports (background-blend-mode: screen) {
+      background-blend-mode: screen;
+    }
     &--1 {
       background-image: linear-gradient(
           to right bottom,
@@ -86,15 +95,6 @@
           $color-tertiary-dark
         ),
         url(../img/nat-7.jpg);
-      @media (min-resolution: 192dpi) and (min-width: 37.5em),
-        (min-width: 125em) {
-        background-image: linear-gradient(
-            to right bottom,
-            rgba($color-primary-light, 0.8),
-            rgba($color-primary-dark, 0.8)
-          ),
-          url(../img/nat-7.jpg);
-      }
     }
   }
   &__heading {
@@ -110,8 +110,12 @@
   }
   &__heading-span {
     padding: 0.8rem 1.5rem;
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
+    @supports (
+      (-webkit-box-decoration-break: clone) or (box-decoration-break: clone)
+    ) {
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
     &--1 {
       background-image: linear-gradient(
         to right bottom,
@@ -183,18 +187,19 @@
       box-shadow: none;
       &--back {
         transform: rotateY(0);
-        clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+        @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+          -webkit-clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+          clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+        }
         border-radius: 0 0 10px 10px;
       }
-    }
-    // .card:hover .card__side--front {} // style for .card__side when hovered on .card
+    } // .card:hover .card__side--front {} // style for .card__side when hovered on .card
     &:hover &__side--front {
       transform: rotateY(0);
     }
     &__details {
       padding: 0 2rem;
-    }
-    // front side styling
+    } // front side styling
     &__cta {
       position: relative;
       top: 0;
